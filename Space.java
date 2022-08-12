@@ -12,5 +12,3 @@ public class Space extends  BaseField implements Field {
     }
 
 }
-
-

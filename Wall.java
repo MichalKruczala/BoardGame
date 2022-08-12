@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Wall extends BaseField implements Field {
 
     public boolean isMovable() {
@@ -11,22 +13,8 @@ public class Wall extends BaseField implements Field {
 
 
     @Override
-    public Field moveUp() throws Exception {
+    public List<Field> getNeighbours() throws Exception {
 
-        throw new Exception("Its a wall");
-    }
-    @Override
-    public Field moveDown() throws Exception {
-        throw new Exception("Its a wall");
-
-    }
-    @Override
-    public Field moveLeft() throws Exception {
-        throw new Exception("Its a wall");
-
-    }
-    @Override
-    public Field moveRight() throws Exception {
         throw new Exception("Its a wall");
     }
 }

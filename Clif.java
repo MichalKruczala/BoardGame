@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Clif extends BaseField implements  Field{
 
 
@@ -11,22 +13,8 @@ public class Clif extends BaseField implements  Field{
     }
 
     @Override
-    public Field moveUp() throws Exception {
+    public List<Field> getNeighbours() throws Exception {
 
-        throw new Exception("Its a Clif,wasted!!!!!!");
-    }
-    @Override
-    public Field moveDown() throws Exception {
-        throw new Exception("Its a Clif,wasted!!!!!!");
-
-    }
-    @Override
-    public Field moveLeft() throws Exception {
-        throw new Exception("Its a Clif,wasted!!!!!!");
-
-    }
-    @Override
-    public Field moveRight() throws Exception {
         throw new Exception("Its a Clif,wasted!!!!!!");
     }
 }

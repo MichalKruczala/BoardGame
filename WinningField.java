@@ -1,5 +1,5 @@
 public class WinningField extends BaseField{
-        @Override
+    @Override
     public boolean isMovable() {
         return true;
     }

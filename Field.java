@@ -1,3 +1,5 @@
+import java.util.List;
+
 interface Field {
 
 
@@ -5,11 +7,8 @@ interface Field {
 
     public boolean isWinning();
 
-    public Field moveUp() throws Exception;
+    public List<Field> getNeighbours() throws Exception;
 
-    public Field moveDown() throws Exception;
-
-    public Field moveLeft() throws Exception;
-
-    public Field moveRight() throws Exception;
+    void visit();
+    int getVisitedCount();
 }

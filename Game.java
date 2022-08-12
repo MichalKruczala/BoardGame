@@ -1,42 +1,38 @@
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class Game {
     public static void main(String[] args) throws Exception {
+        GameReader gameReader = new FileGameReader("c://Projects/map1.txt");
 
-        BaseField[][]board = new BaseField[4][4];
-        board[0][0] = new Clif();
-        board[0][1] = new Clif();
-        board[0][2] = new Clif();
-        board[0][3] = new Clif();
-        board[1][0] = new Clif();
-        board[1][1] = new Space();
-        board[1][2] = new Wall();
-        board[1][3] = new Clif();
-        board[2][0] = new Clif();
-        board[2][1] = new Space();
-        board[2][2] = new WinningField();
-        board[2][3] = new Clif();
-        board[3][0] = new Clif();
-        board[3][1] = new Clif();
-        board[3][2] = new Clif();
-        board[3][3] = new Clif();
+        Field currentPoint = gameReader.readStartPoint();
+        currentPoint.visit();
+        while (!currentPoint.isWinning()) {
 
-        board[1][1].linkNeighbours(board[0][1],board[2][1],board[1][2],board[1][0]);
-        board[1][2].linkNeighbours(board[0][2],board[2][2],board[1][3],board[1][1]);
-        board[2][1].linkNeighbours(board[1][1],board[3][1],board[2][2],board[2][0]);
-        board[2][2].linkNeighbours(board[1][2],board[3][2],board[2][3],board[2][1]);
+            List<Field> neighbours = currentPoint.getNeighbours();
 
-
-        Field startingPoint = board[1][1];
-        Field nextField = startingPoint.moveDown();
-         nextField = nextField.moveRight();
-         if (nextField.isWinning()){
-             System.out.println("Huraaaaa");
-         }
-
-
+            Stream<Field> stream =neighbours.stream();
+            currentPoint = stream.filter(field -> field.isMovable())
+                    .sorted(Comparator.comparingInt(Field::getVisitedCount))
+                    .findFirst()
+                    .get();
+            currentPoint.visit();
+        }
+        System.out.println("Huraaaaa");
 
     }
+
 }
+// wzorzec dekorator !!! obadaÄ‡
 
+// Waterfall waterfall = new Waterfall(123,345);
+//  waterfall = new Waterfall(-234,456);
+//   Waterfall first =  Waterfall.Create(123,123);
+//  Waterfall second = new Waterfall(first);
+//  Waterfall third = new Waterfall(-100.0,200);
 
-
+//        System.out.println(waterfall.jakiStrumien());
+//        System.out.println(waterfall.getPole()+ " pole");
+//
 
